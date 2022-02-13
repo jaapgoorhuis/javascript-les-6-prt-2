@@ -478,15 +478,13 @@ function createCountries(countries) {
     console.log(countries);
     const htmlElement = document.getElementById('allcountries');
     countries.map((result)=>{
-        const countrylist = document.createElement('li');
-        countrylist.innerHTML = `
-              
+        const list = document.createElement('li');
+        list.innerHTML = `
                     <img id="countryimage" src="${result.flag}"/>
                     <label id="title" class="${result.region}">${result.name}</label>
                     <section id="description">Has a population of ${result.population} people</section>
-              
                     `;
-        htmlElement.appendChild(countrylist);
+        htmlElement.appendChild(list);
     });
 }
 
