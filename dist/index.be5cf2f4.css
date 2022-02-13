@@ -11,7 +11,8 @@ img#countryimage {
     grid-gap: 16px;
     grid-auto-rows:auto;
     grid-template-areas:
-        "a b c "
+        "a b c ";
+    list-style: none;
 }
 
 label#title {
@@ -33,4 +34,5 @@ label#title {
 .Asia {
     color:#820303;
 }
+
 /*# sourceMappingURL=index.be5cf2f4.css.map */

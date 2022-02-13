@@ -465,26 +465,30 @@ var _axiosDefault = parcelHelpers.interopDefault(_axios);
 async function getCountries() {
     try {
         const allCountries = await _axiosDefault.default('https://restcountries.com/v2/all');
-        const results = allCountries.data;
-        results.sort((a, b)=>{
+        allCountries.data.sort((a, b)=>{
             return a.population - b.population;
         });
-        const htmlElement = document.getElementById('allcountries');
-        const result = results.map((result)=>{
-            return `<div id="data" ">
-                <img id="countryimage" src="${result.flag}"/>
-                <label id="title" class="${result.region}">${result.name}</label>
-                <section id="description">Has a population of ${result.population} people</section>
-            </div>
-                `;
-        });
-        htmlElement.innerHTML = result.join('');
-        return results;
+        createCountries(allCountries.data);
     } catch (e) {
         console.error(e);
     }
 }
 getCountries();
+function createCountries(countries) {
+    console.log(countries);
+    const htmlElement = document.getElementById('allcountries');
+    countries.map((result)=>{
+        const countrylist = document.createElement('li');
+        countrylist.innerHTML = `
+              
+                    <img id="countryimage" src="${result.flag}"/>
+                    <label id="title" class="${result.region}">${result.name}</label>
+                    <section id="description">Has a population of ${result.population} people</section>
+              
+                    `;
+        htmlElement.appendChild(countrylist);
+    });
+}
 
 },{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1IeuP":[function(require,module,exports) {
 module.exports = require('./lib/axios');
